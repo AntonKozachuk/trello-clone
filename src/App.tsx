@@ -1,12 +1,20 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
 import { AppContainer } from './styles';
+import { Column } from './Column';
+import { Card } from './Card';
 
 const App = () => {
   return (
     <AppContainer>
-      Columns will go here
+      <Column text="To do">
+        <Card text="Generate app scaffold" />
+      </Column>
+      <Column text="In Progress">
+        <Card text="Learn Typescript" />
+      </Column>
+      <Column text="Done">
+        <Card text="Begin to use static typing" />
+      </Column>
     </AppContainer>
   )
 }
