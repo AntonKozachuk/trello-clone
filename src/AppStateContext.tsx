@@ -15,6 +15,7 @@ type Action =
     }
 interface AppStateContextProps {
     state: AppState
+    dispatch: React.Dispatch<any>
 }
 
 interface Task {
