@@ -1,5 +1,5 @@
 import React, { createContext, useReducer, useContext } from 'react';
-import uuid from 'uuid';
+import { nanoid } from 'nanoid';
 import { findItemIndexById } from './utils/findItemIndexById';
 
 const AppStateContext = createContext<AppStateContextProps>({} as AppStateContextProps);
@@ -64,7 +64,7 @@ export const useAppState = () => {
     return useContext(AppStateContext)
 }
 
-const appStateReducer = {state: AppState, action: Action}: AppState => {
+const appStateReducer = (state: AppState, action: Action): AppState => {
     switch (action.type) {
         case 'ADD_LIST': {
             // Reducer logic here
@@ -72,7 +72,7 @@ const appStateReducer = {state: AppState, action: Action}: AppState => {
                 ...state,
                 lists: [
                     ...state.lists,
-                    { id: uuid(), text: action.payload, tasks: []}
+                    { id: nanoid(), text: action.payload, tasks: []}
                 ]
             }
         }
@@ -82,7 +82,7 @@ const appStateReducer = {state: AppState, action: Action}: AppState => {
                 action.payload.taskId
             )
             state.lists[targetLaneIndex].tasks.push({
-                id: uuid(),
+                id: nanoid(),
                 text: action.payload.text
             })
             return {

@@ -7,7 +7,7 @@ import { Card } from './Card';
 interface ColumnProps {
     text: string
     index: number
-    id: number
+    id: string
 }
 
 export const Column = ({
